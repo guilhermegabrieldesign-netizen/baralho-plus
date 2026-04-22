@@ -1,0 +1,111 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Baralho+ | Ranking</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container ranking-shell premium-page-shell">
+      <header class="topbar ranking-topbar premium-topbar">
+        <div class="topbar-inner ranking-topbar-inner">
+          <div>
+            <div class="section-overline">Competicao</div>
+            <div class="section-title">Ranking global</div>
+            <div class="subtle">Veja quem esta dominando as mesas e acumulando mais vitrias.</div>
+          </div>
+          <button class="balance-chip balance-chip-premium" onclick="App.goToStore()">
+            <span class="coin-icon">◉</span>
+            <strong data-coin-balance>0</strong>
+          </button>
+        </div>
+      </header>
+
+      <main class="page-content ranking-main">
+        <div class="ranking-tabs premium-toggle">
+          <button id="tab-coins" class="btn-primary">Moedinhas</button>
+          <button id="tab-wins" class="btn-secondary">Vitorias</button>
+        </div>
+
+        <section id="podium" class="ranking-podium premium-podium"></section>
+        <section id="ranking-list" class="ranking-list premium-ranking-list"></section>
+      </main>
+
+      <div id="bottom-nav-root"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+      document.getElementById('bottom-nav-root').innerHTML = App.createBottomNav('hall');
+
+      const state = { metric: 'coins' };
+
+      function avatarInitial(name) {
+        return (name || '?').charAt(0).toUpperCase();
+      }
+
+      function renderRanking(entries) {
+        const podium = document.getElementById('podium');
+        const list = document.getElementById('ranking-list');
+        const topThree = entries.slice(0, 3);
+        const rest = entries.slice(3);
+        const classes = ['gold', 'silver', 'bronze'];
+
+        podium.innerHTML = topThree
+          .map((player, index) => `
+            <article class="ranking-card premium-card ${classes[index]}">
+              <div class="ranking-ribbon">#${index + 1}</div>
+              <div class="avatar ranking-avatar">${avatarInitial(player.username)}</div>
+              <div class="ranking-name">${player.username}</div>
+              <div class="subtle">${player.rank}</div>
+              <div class="badge badge-gold ranking-badge">
+                ${state.metric === 'coins' ? App.formatCoins(player.coins) : `${player.wins} vitorias`}
+              </div>
+            </article>
+          `)
+          .join('');
+
+        list.innerHTML = rest.length
+          ? rest.map((player, index) => `
+              <article class="ranking-row premium-ranking-row">
+                <div class="ranking-row-left">
+                  <strong class="ranking-position">${index + 4}</strong>
+                  <div class="avatar ranking-list-avatar">${avatarInitial(player.username)}</div>
+                  <div>
+                    <div class="ranking-name">${player.username}</div>
+                    <div class="subtle">${player.rank}</div>
+                  </div>
+                </div>
+                <strong class="ranking-row-score">${state.metric === 'coins' ? App.formatCoins(player.coins) : `${player.wins} vit`}</strong>
+              </article>
+            `).join('')
+          : '<div class="empty-state premium-empty-state">Nenhum jogador encontrado.</div>';
+      }
+
+      async function loadRanking() {
+        try {
+          const data = await App.fetchJson(`/games/ranking?metric=${state.metric}`);
+          renderRanking(data.ranking);
+        } catch (error) {
+          App.showFeedback(error.message, 'danger');
+        }
+      }
+
+      function setMetric(metric) {
+        state.metric = metric;
+        document.getElementById('tab-coins').className = metric === 'coins' ? 'btn-primary' : 'btn-secondary';
+        document.getElementById('tab-wins').className = metric === 'wins' ? 'btn-primary' : 'btn-secondary';
+        loadRanking();
+      }
+
+      App.init().then(() => {
+        setMetric('coins');
+        setInterval(loadRanking, 30000);
+      });
+
+      document.getElementById('tab-coins').addEventListener('click', () => setMetric('coins'));
+      document.getElementById('tab-wins').addEventListener('click', () => setMetric('wins'));
+    </script>
+  </body>
+</html>

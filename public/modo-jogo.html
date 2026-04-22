@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Baralho+ | Truco Mineiro</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container modo-shell">
+      <header class="modo-header">
+        <button class="modo-back" data-nav-href="/index.html">↶</button>
+        <div class="modo-rank-wrap">
+          <div class="modo-rank-icon">✦</div>
+          <div>
+            <div class="modo-rank-name" data-rank>Bronze I</div>
+            <div class="modo-rank-hint">Rank atual</div>
+          </div>
+        </div>
+        <div class="modo-header-actions">
+          <div class="modo-balance">◉ <strong data-coin-balance>0</strong></div>
+          <button class="modo-history" data-coming-soon data-title="Histórico" data-description="Histórico da modalidade em desenvolvimento.">Histórico</button>
+        </div>
+      </header>
+
+      <section class="modo-hero">
+        <div class="modo-variants">
+          <button class="modo-variant">Truco Paulista</button>
+          <button class="modo-variant active">Truco Mineiro</button>
+          <button class="modo-variant modo-variant-new">Paulista 1v1 <span>NEW</span></button>
+        </div>
+      </section>
+
+      <main class="modo-main">
+        <section class="modo-room-list">
+          <article class="ticket-card ticket-green">
+            <div class="ticket-main">
+              <span class="ticket-recommend">Recomendar</span>
+              <strong class="ticket-title">Iniciante</strong>
+              <div class="ticket-lines">
+                <span class="ticket-win">win +3 ◆ ★</span>
+                <span class="ticket-loss">lose -2 ◆</span>
+              </div>
+              <div class="ticket-meta">Aposta: 100 moedinhas</div>
+              <div class="ticket-meta">Recomendado: 800~40.000 moedinhas</div>
+              <div class="ticket-card-art">🃏</div>
+            </div>
+            <button class="ticket-enter" data-nav-href="/matchmaking.html">ENTRAR</button>
+          </article>
+
+          <article class="ticket-card ticket-blue">
+            <div class="ticket-main">
+              <strong class="ticket-title">Médio</strong>
+              <div class="ticket-lines">
+                <span class="ticket-win">win +3 ◆ ★</span>
+                <span class="ticket-loss">lose -2 ◆</span>
+              </div>
+              <div class="ticket-meta">Aposta: 250 moedinhas</div>
+              <div class="ticket-meta">Recomendado: 9.000~120.000 moedinhas</div>
+              <div class="ticket-card-art">♠</div>
+            </div>
+            <button class="ticket-enter" data-nav-href="/matchmaking.html">ENTRAR</button>
+          </article>
+
+          <article class="ticket-card ticket-gold">
+            <div class="ticket-main">
+              <strong class="ticket-title">Sênior</strong>
+              <div class="ticket-lines">
+                <span class="ticket-win">win +4 ◆ ★</span>
+                <span class="ticket-loss">lose -3 ◆</span>
+              </div>
+              <div class="ticket-meta">Aposta: 500 moedinhas</div>
+              <div class="ticket-meta">Recomendado: 24.000~270.000 moedinhas</div>
+              <div class="ticket-card-art">♥</div>
+            </div>
+            <button class="ticket-enter" data-nav-href="/matchmaking.html">ENTRAR</button>
+          </article>
+
+          <article class="ticket-card ticket-red">
+            <div class="ticket-main">
+              <strong class="ticket-title">Profissão</strong>
+              <div class="ticket-lines">
+                <span class="ticket-win">win +5 ◆ ★</span>
+                <span class="ticket-loss">lose -3 ◆</span>
+              </div>
+              <div class="ticket-meta">Aposta: 1000 moedinhas</div>
+              <div class="ticket-meta">Recomendado: 54.000~850.000 moedinhas</div>
+              <div class="ticket-card-art">♣</div>
+            </div>
+            <button class="ticket-enter" data-nav-href="/matchmaking.html">ENTRAR</button>
+          </article>
+        </section>
+      </main>
+
+      <footer class="modo-quickbar">
+        <button class="modo-quick-button" data-nav-href="/matchmaking.html">INÍCIO RÁPIDO >></button>
+        <span>Aposta: 100 moedinhas</span>
+      </footer>
+
+      <script src="/js/app.js"></script>
+      <script>
+        App.init();
+      </script>
+    </div>
+  </body>
+</html>

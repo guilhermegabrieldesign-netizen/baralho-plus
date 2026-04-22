@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Baralho+ | Matchmaking</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container matchmaking-shell">
+      <section class="matchmaking-team matchmaking-team-top">
+        <div class="match-player-card found">
+          <div class="match-avatar" data-avatar-initial>G</div>
+          <strong data-username>Jogador</strong>
+          <span class="match-rank" data-rank>Bronze I</span>
+        </div>
+        <div class="match-player-card found">
+          <div class="match-avatar">P</div>
+          <strong>Parceiro Bot</strong>
+          <span class="match-rank">Parceiro</span>
+        </div>
+      </section>
+
+      <section class="matchmaking-status">
+        <div class="match-line"></div>
+        <div class="match-circle">
+          <span>Encontrar Oponentes</span>
+          <strong id="match-count">0</strong>
+        </div>
+      </section>
+
+      <section class="matchmaking-team matchmaking-team-bottom">
+        <div id="bot-slot-1" class="match-player-card waiting">
+          <div class="match-avatar empty">?</div>
+          <strong>Procurando...</strong>
+          <span class="match-rank">Aguardando</span>
+        </div>
+        <div id="bot-slot-2" class="match-player-card waiting">
+          <div class="match-avatar empty">?</div>
+          <strong>Procurando...</strong>
+          <span class="match-rank">Aguardando</span>
+        </div>
+      </section>
+
+      <div class="matchmaking-footer">
+        <button class="match-cancel" data-nav-href="/modo-jogo.html">Cancelar</button>
+        <p>Se você empatar com seu adversário no 3º turno, o time que venceu o 1º turno vencerá</p>
+      </div>
+
+      <script src="/js/app.js"></script>
+      <script>
+        const bots = [
+          ['MauMau', 'Platina I'],
+          ['Guest_1398', 'Ouro II'],
+          ['NandaNando', 'Prata III'],
+          ['Lordzera', 'Bronze V']
+        ];
+
+        App.init();
+
+        setTimeout(() => {
+          document.getElementById('match-count').textContent = '2';
+          const picks = bots.sort(() => Math.random() - 0.5).slice(0, 2);
+          const slot1 = document.getElementById('bot-slot-1');
+          const slot2 = document.getElementById('bot-slot-2');
+          [slot1, slot2].forEach((slot, index) => {
+            slot.classList.remove('waiting');
+            slot.classList.add('found');
+            slot.querySelector('.match-avatar').classList.remove('empty');
+            slot.querySelector('.match-avatar').textContent = picks[index][0].charAt(0).toUpperCase();
+            slot.querySelector('strong').textContent = picks[index][0];
+            slot.querySelector('.match-rank').textContent = picks[index][1];
+          });
+        }, 1500);
+
+        setTimeout(() => {
+          App.navigateWithFade('/truco.html');
+        }, 3000);
+      </script>
+    </div>
+  </body>
+</html>

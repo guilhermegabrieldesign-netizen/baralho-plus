@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Baralho+ | Caca-niquel</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container slots-shell premium-page-shell">
+      <header class="topbar slots-topbar premium-topbar">
+        <div class="topbar-inner slots-topbar-inner">
+          <div class="brand slots-brand-head">
+            <button class="icon-button premium-icon-button" data-nav-href="/index.html">←</button>
+            <div>
+              <div class="section-overline">Mini game</div>
+              <div class="section-title">Fortune Slots</div>
+            </div>
+          </div>
+          <button class="balance-chip balance-chip-premium" onclick="App.goToStore()">
+            <span class="coin-icon">◉</span>
+            <strong data-coin-balance>0</strong>
+          </button>
+        </div>
+      </header>
+
+      <main class="page-content slots-main premium-slots-main">
+        <section class="slots-machine premium-card premium-slots-machine">
+          <div class="slots-machine-topline">
+            <span class="badge badge-purple">Jackpot Room</span>
+            <span class="slots-machine-hint">Pague na mesma linha para multiplicar seu premio.</span>
+          </div>
+
+          <div class="slots-machine-copy">
+            <h1 class="slots-title">Gire e persiga a melhor combinacao</h1>
+            <p class="subtle">Apostas curtas, rolos vivos e feedback imediato quando a sorte bate.</p>
+          </div>
+
+          <div class="slot-reels premium-slot-reels">
+            <div class="slot-reel premium-slot-reel" data-reel>7</div>
+            <div class="slot-reel premium-slot-reel" data-reel>*</div>
+            <div class="slot-reel premium-slot-reel" data-reel>BAR</div>
+          </div>
+
+          <div class="payline premium-payline">linha de pagamento</div>
+          <div id="slots-result" class="slots-result premium-slots-result">Escolha uma aposta para comecar.</div>
+        </section>
+
+        <section class="slots-controls premium-card">
+          <div class="section-header section-header-stacked compact-header">
+            <div>
+              <div class="section-title">Escolha sua aposta</div>
+              <div class="subtle">Toque em um valor para definir sua rodada.</div>
+            </div>
+          </div>
+          <div class="bet-selector premium-bet-selector">
+            <button class="bet-chip active" data-bet="10">10</button>
+            <button class="bet-chip" data-bet="25">25</button>
+            <button class="bet-chip" data-bet="50">50</button>
+            <button class="bet-chip" data-bet="100">100</button>
+          </div>
+          <button id="spin-button" class="btn-primary slots-spin-button">Girar - 10 moedinhas</button>
+        </section>
+
+        <section class="stats-grid premium-slots-stats">
+          <article class="stats-card premium-card">
+            <div class="subtle">Vitorias</div>
+            <div id="stats-wins" class="section-title">0</div>
+          </article>
+          <article class="stats-card premium-card">
+            <div class="subtle">Rodadas</div>
+            <div id="stats-rounds" class="section-title">0</div>
+          </article>
+          <article class="stats-card premium-card">
+            <div class="subtle">Melhor ganho</div>
+            <div id="stats-best" class="section-title">0</div>
+          </article>
+        </section>
+
+        <section class="paytable premium-card premium-paytable-card">
+          <div class="section-header section-header-stacked compact-header">
+            <div>
+              <div class="section-title">Tabela de pagamento</div>
+              <div class="subtle">Sequencias especiais entregam multiplicadores maiores.</div>
+            </div>
+          </div>
+          <div class="table-row"><span>7 7 7</span><strong>x50</strong></div>
+          <div class="table-row"><span>Estrela tripla</span><strong>x20</strong></div>
+          <div class="table-row"><span>Diamantes triplos</span><strong>x10</strong></div>
+          <div class="table-row"><span>BAR BAR BAR</span><strong>x8</strong></div>
+          <div class="table-row"><span>2 simbolos iguais</span><strong>x1.5</strong></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/slots-secure.js"></script>
+    <script>
+      SlotsGame.init();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Baralho+ | Loja</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <div class="page-container loja-shell premium-page-shell">
+      <header class="topbar loja-topbar premium-topbar">
+        <div class="topbar-inner loja-topbar-inner">
+          <div>
+            <div class="section-overline">Moedinhas</div>
+            <div class="section-title">Loja premium</div>
+            <div class="subtle">Pacotes, bonus diarios e pequenos impulsos para continuar jogando.</div>
+          </div>
+          <button class="balance-chip balance-chip-premium" onclick="App.goToStore()">
+            <span class="coin-icon">◉</span>
+            <strong data-coin-balance>0</strong>
+          </button>
+        </div>
+      </header>
+
+      <main class="page-content loja-main">
+        <section class="daily-card daily-bonus-card premium-card">
+          <div class="daily-bonus-copy">
+            <span class="section-overline">Recompensa do dia</span>
+            <div class="section-title">Bonus diario liberado</div>
+            <div class="subtle">Entre, resgate e mantenha sua banca aquecida para as proximas partidas.</div>
+          </div>
+          <div class="daily-bonus-side">
+            <div class="daily-bonus-value">+100</div>
+            <div class="daily-bonus-caption">moedinhas</div>
+          </div>
+          <button id="daily-button" class="btn-gold" style="width: 100%;">Resgatar 100 moedinhas</button>
+        </section>
+
+        <section class="section loja-section">
+          <div class="section-header section-header-stacked">
+            <div>
+              <div class="section-title">Pacotes de moedinhas</div>
+              <div class="subtle">Escolha o impulso certo para sua proxima sequencia.</div>
+            </div>
+          </div>
+
+          <div class="packs-grid premium-pack-grid">
+            <article class="pack-card premium-card premium-pack-card">
+              <div class="pack-card-glow"></div>
+              <div class="pack-icon premium-pack-icon">◉</div>
+              <div class="pack-title">500 moedas</div>
+              <div class="pack-highlight">Entrada rapida para slots e mesas leves.</div>
+              <div class="pack-price">R$1,99</div>
+              <button class="btn-primary" style="width: 100%; margin-top: 12px;" data-coming-soon data-title="Pagamento" data-description="Pagamento real ainda esta em desenvolvimento.">Comprar</button>
+            </article>
+
+            <article class="pack-card premium-card premium-pack-card premium-pack-featured">
+              <div class="pack-card-glow"></div>
+              <div class="pack-badge">Mais escolhido</div>
+              <div class="pack-icon premium-pack-icon">◎</div>
+              <div class="pack-title">1.200 moedas</div>
+              <div class="pack-highlight">Folego ideal para maratonar sem pensar no saldo.</div>
+              <div class="pack-price">R$4,99</div>
+              <button class="btn-primary" style="width: 100%; margin-top: 12px;" data-coming-soon data-title="Pagamento" data-description="Pagamento real ainda esta em desenvolvimento.">Comprar</button>
+            </article>
+
+            <article class="pack-card premium-card premium-pack-card">
+              <div class="pack-card-glow"></div>
+              <div class="pack-icon premium-pack-icon">◉</div>
+              <div class="pack-title">3.000 moedas</div>
+              <div class="pack-highlight">Ideal para subir de mesa e jogar com mais liberdade.</div>
+              <div class="pack-price">R$9,99</div>
+              <button class="btn-primary" style="width: 100%; margin-top: 12px;" data-coming-soon data-title="Pagamento" data-description="Pagamento real ainda esta em desenvolvimento.">Comprar</button>
+            </article>
+
+            <article class="pack-card premium-card premium-pack-card">
+              <div class="pack-card-glow"></div>
+              <div class="pack-icon premium-pack-icon">◉</div>
+              <div class="pack-title">8.000 moedas</div>
+              <div class="pack-highlight">Pacote premium para quem quer ficar confortavel por muito tempo.</div>
+              <div class="pack-price">R$19,99</div>
+              <button class="btn-primary" style="width: 100%; margin-top: 12px;" data-coming-soon data-title="Pagamento" data-description="Pagamento real ainda esta em desenvolvimento.">Comprar</button>
+            </article>
+          </div>
+        </section>
+
+        <section class="section loja-section">
+          <div class="section-header section-header-stacked">
+            <div>
+              <div class="section-title">Ganhe moedinhas</div>
+              <div class="subtle">Atalhos sociais e tarefas simples para reforcar o saldo.</div>
+            </div>
+          </div>
+
+          <div class="actions-grid loja-actions-grid">
+            <article class="action-card premium-card reward-card">
+              <div class="reward-card-head">
+                <div>
+                  <div class="section-title">Convide um amigo</div>
+                  <div class="subtle">Ganhe 200 moedinhas ao compartilhar seu link.</div>
+                </div>
+                <div class="reward-card-icon reward-card-icon-purple">↗</div>
+              </div>
+              <button id="share-button" class="btn-secondary" style="width: 100%;">Compartilhar</button>
+            </article>
+
+            <article class="action-card premium-card reward-card">
+              <div class="reward-card-head">
+                <div>
+                  <div class="section-title">Complete seu perfil</div>
+                  <div class="subtle">Missao rapida que libera mais 50 moedinhas.</div>
+                </div>
+                <div class="reward-card-icon reward-card-icon-green">✓</div>
+              </div>
+              <button id="profile-button" class="btn-secondary" style="width: 100%;">Concluir tarefa</button>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div id="bottom-nav-root"></div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script>
+      document.getElementById('bottom-nav-root').innerHTML = App.createBottomNav('loja');
+
+      async function checkDailyStatus() {
+        try {
+          const data = await App.fetchJson('/coins/history');
+          const claimedToday = data.history.some((item) => item.game === 'daily-bonus' && item.type === 'bonus');
+          if (claimedToday) {
+            const button = document.getElementById('daily-button');
+            button.disabled = true;
+            button.textContent = 'Volte amanha';
+          }
+        } catch (error) {
+          App.showFeedback(error.message, 'danger');
+        }
+      }
+
+      App.init().then(checkDailyStatus);
+
+      document.getElementById('daily-button').addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        App.setLoading(button, true, 'Aguarde...');
+        try {
+          await App.fetchJson('/coins/daily-bonus', { method: 'POST' });
+          await App.refreshBalance();
+          button.disabled = true;
+          button.textContent = 'Volte amanha';
+          App.showFeedback('+100 moedinhas', 'success');
+        } catch (error) {
+          App.showFeedback(error.message, 'danger');
+        } finally {
+          if (!button.disabled) App.setLoading(button, false);
+        }
+      });
+
+      document.getElementById('share-button').addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        App.setLoading(button, true, 'Aguarde...');
+        try {
+          await navigator.clipboard.writeText('https://baralho.plus/convite/demo');
+          App.showFeedback('Link copiado para a area de transferencia', 'success');
+        } catch (error) {
+          App.showFeedback('Nao foi possivel copiar o link', 'danger');
+        } finally {
+          App.setLoading(button, false);
+        }
+      });
+
+      document.getElementById('profile-button').addEventListener('click', async (event) => {
+        const button = event.currentTarget;
+        App.setLoading(button, true, 'Aguarde...');
+        try {
+          await App.fetchJson('/coins/profile-bonus', { method: 'POST' });
+          await App.refreshBalance();
+          App.showFeedback('+50 moedinhas', 'success');
+          button.disabled = true;
+          button.textContent = 'Tarefa concluida';
+        } catch (error) {
+          App.showFeedback(error.message, 'danger');
+        } finally {
+          if (!button.disabled) App.setLoading(button, false);
+        }
+      });
+    </script>
+  </body>
+</html>
