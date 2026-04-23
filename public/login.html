@@ -1,46 +1,233 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Baralho+ | Entrar</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <style>
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+
+      .login-shell {
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px 16px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(124,58,237,0.18), transparent 50%),
+          radial-gradient(circle at 50% 100%, rgba(200,168,75,0.10), transparent 50%),
+          linear-gradient(180deg, #100f19 0%, #09090d 100%);
+      }
+
+      .login-brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        text-align: center;
+      }
+
+      .login-brand-mark {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        background: linear-gradient(180deg, rgba(124,58,237,0.4), rgba(124,58,237,0.15));
+        border: 1px solid rgba(124,58,237,0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #c8a84b;
+      }
+
+      .login-brand-name {
+        font-size: 13px;
+        font-weight: 700;
+        color: #c8a84b;
+        letter-spacing: 1px;
+      }
+
+      .login-title {
+        font-size: 26px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 1.15;
+      }
+
+      .login-subtitle {
+        font-size: 13px;
+        color: #666;
+        line-height: 1.5;
+        max-width: 280px;
+      }
+
+      .login-card {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.08);
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .login-card-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #fff;
+        margin-bottom: 4px;
+      }
+
+      .login-card-sub {
+        font-size: 12px;
+        color: #555;
+        margin-bottom: 18px;
+        line-height: 1.4;
+      }
+
+      .login-field {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 12px;
+      }
+
+      .login-field label {
+        font-size: 12px;
+        color: #888;
+      }
+
+      .login-field input {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        height: 46px;
+        padding: 0 14px;
+        color: #fff;
+        font-size: 15px;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+
+      .login-field input:focus {
+        border-color: rgba(124,58,237,0.5);
+        background: rgba(124,58,237,0.06);
+      }
+
+      .login-btn-primary {
+        width: 100%;
+        height: 48px;
+        background: #7c3aed;
+        border: none;
+        border-radius: 14px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 700;
+        cursor: pointer;
+        margin-top: 4px;
+        transition: background 0.2s, transform 0.1s;
+      }
+
+      .login-btn-primary:active {
+        transform: scale(0.98);
+        background: #6d28d9;
+      }
+
+      .login-divider {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 14px 0;
+      }
+
+      .login-divider::before,
+      .login-divider::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: rgba(255,255,255,0.08);
+      }
+
+      .login-divider span {
+        font-size: 11px;
+        color: #444;
+      }
+
+      .login-btn-secondary {
+        width: 100%;
+        height: 46px;
+        background: transparent;
+        border: 1px solid rgba(255,255,255,0.12);
+        border-radius: 14px;
+        color: #aaa;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: border-color 0.2s, color 0.2s;
+      }
+
+      .login-btn-secondary:hover {
+        border-color: rgba(124,58,237,0.4);
+        color: #c8a84b;
+      }
+
+      .login-mode-label {
+        text-align: center;
+        font-size: 12px;
+        color: #444;
+        margin-top: 14px;
+      }
+
+      @media (min-height: 700px) {
+        .login-brand { margin-bottom: 28px; }
+        .login-title { font-size: 28px; }
+        .login-card { padding: 24px; }
+      }
+
+      @media (max-height: 620px) {
+        .login-brand { margin-bottom: 16px; gap: 6px; }
+        .login-brand-mark { width: 40px; height: 40px; font-size: 18px; }
+        .login-title { font-size: 22px; }
+        .login-subtitle { display: none; }
+        .login-card { padding: 16px; }
+        .login-field { margin-bottom: 8px; }
+        .login-field input { height: 42px; }
+        .login-btn-primary { height: 44px; }
+        .login-divider { margin: 10px 0; }
+        .login-btn-secondary { height: 42px; }
+      }
+    </style>
   </head>
   <body>
-    <main class="page-container auth-screen auth-shell premium-page-shell">
-      <section class="auth-hero premium-card">
-        <div class="auth-hero-mark">♠</div>
-        <div class="section-overline">Baralho+</div>
-        <h1 class="auth-title">Entre no seu lounge de cartas</h1>
-        <p class="auth-subtitle">Um app de jogos com atmosfera premium, partidas rapidas e uma mesa sempre pronta para voce.</p>
-      </section>
+    <main class="login-shell">
+      <div class="login-brand">
+        <div class="login-brand-mark">♠</div>
+        <span class="login-brand-name">BARALHO+</span>
+        <h1 class="login-title">Entre no seu<br>lounge de cartas</h1>
+        <p class="login-subtitle">Atmosfera premium, partidas rápidas e uma mesa sempre pronta para você.</p>
+      </div>
 
-      <section class="auth-card premium-card">
-        <div class="brand auth-brand">
-          <div class="brand-mark">♠</div>
-          <div>
-            <div class="section-title">Acesse sua conta</div>
-            <div class="subtle">Entre para continuar suas partidas e manter seu saldo sincronizado.</div>
+      <div class="login-card">
+        <div class="login-card-title" id="card-title">Acesse sua conta</div>
+        <div class="login-card-sub" id="card-sub">Entre para continuar suas partidas e manter seu saldo sincronizado.</div>
+
+        <form id="login-form">
+          <div class="login-field">
+            <label>Usuário</label>
+            <input id="username" type="text" placeholder="Seu usuário" required autocomplete="username" />
           </div>
-        </div>
-
-        <form id="login-form" class="auth-form premium-auth-form">
-          <label class="auth-field">
-            <span>Usuario</span>
-            <input id="username" class="input-field" type="text" placeholder="Seu usuario" required />
-          </label>
-          <label class="auth-field">
-            <span>Senha</span>
-            <input id="password" class="input-field" type="password" placeholder="Sua senha" required />
-          </label>
-          <button id="login-button" class="btn-primary auth-submit" type="submit">Entrar</button>
+          <div class="login-field">
+            <label>Senha</label>
+            <input id="password" type="password" placeholder="Sua senha" required autocomplete="current-password" />
+          </div>
+          <button id="login-button" class="login-btn-primary" type="submit">Entrar</button>
         </form>
 
-        <div class="auth-footer subtle">
-          Ainda nao tem conta?
-          <button id="toggle-register" class="btn-secondary auth-toggle" style="margin-top: 10px; width: 100%;">Criar conta</button>
-        </div>
-      </section>
+        <div class="login-divider"><span>ou</span></div>
+
+        <button id="toggle-register" class="login-btn-secondary">Criar conta grátis</button>
+
+        <div class="login-mode-label" id="mode-label">Ainda não tem conta? Crie agora é grátis.</div>
+      </div>
     </main>
 
     <script src="/js/app.js"></script>
@@ -48,43 +235,50 @@
       const form = document.getElementById('login-form');
       const button = document.getElementById('login-button');
       const toggleRegister = document.getElementById('toggle-register');
+      const cardTitle = document.getElementById('card-title');
+      const cardSub = document.getElementById('card-sub');
+      const modeLabel = document.getElementById('mode-label');
       let registerMode = false;
 
       App.init({ skipAuth: true }).then(async () => {
         const currentPlayer = await App.fetchCurrentPlayer();
-        if (currentPlayer) {
-          App.navigateWithFade('/index.html');
-        }
+        if (currentPlayer) App.navigateWithFade('/index.html');
       });
 
       function updateMode() {
-        document.title = registerMode ? 'Baralho+ | Criar conta' : 'Baralho+ | Entrar';
-        button.textContent = registerMode ? 'Criar conta' : 'Entrar';
-        toggleRegister.textContent = registerMode ? 'Ja tenho conta' : 'Criar conta';
+        if (registerMode) {
+          document.title = 'Baralho+ | Criar conta';
+          button.textContent = 'Criar conta';
+          toggleRegister.textContent = 'Já tenho conta';
+          cardTitle.textContent = 'Crie sua conta';
+          cardSub.textContent = 'É grátis e você começa com 1.000 moedinhas.';
+          modeLabel.textContent = 'Já tem conta? Faça login acima.';
+        } else {
+          document.title = 'Baralho+ | Entrar';
+          button.textContent = 'Entrar';
+          toggleRegister.textContent = 'Criar conta grátis';
+          cardTitle.textContent = 'Acesse sua conta';
+          cardSub.textContent = 'Entre para continuar suas partidas e manter seu saldo sincronizado.';
+          modeLabel.textContent = 'Ainda não tem conta? Crie agora é grátis.';
+        }
       }
 
-      toggleRegister.addEventListener('click', (event) => {
-        event.preventDefault();
+      toggleRegister.addEventListener('click', (e) => {
+        e.preventDefault();
         registerMode = !registerMode;
         updateMode();
       });
 
-      form.addEventListener('submit', async (event) => {
-        event.preventDefault();
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
         App.setLoading(button, true, 'Aguarde...');
-
         try {
           const payload = {
             username: document.getElementById('username').value.trim(),
             password: document.getElementById('password').value
           };
-
           const endpoint = registerMode ? '/auth/register' : '/auth/login';
-          await App.fetchJson(endpoint, {
-            method: 'POST',
-            body: JSON.stringify(payload)
-          });
-
+          await App.fetchJson(endpoint, { method: 'POST', body: JSON.stringify(payload) });
           App.navigateWithFade('/index.html');
         } catch (error) {
           App.showFeedback(error.message, 'danger');
